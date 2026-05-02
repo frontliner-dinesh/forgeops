@@ -1,73 +1,88 @@
-# `ticket-to-plan` Skill
+---
+name: ticket-to-plan
+description: Use when the agent needs to convert a Jira ticket or infrastructure request into an execution-ready delivery plan with explicit repo targeting, assumptions, risks, blockers, validation expectations, and a recommended next specialist handoff.
+---
 
-## Purpose
+# Ticket to Plan
 
-Convert a Jira ticket or infrastructure request into an implementation-ready ForgeOps plan for human review.
+## Overview
 
-The skill is owned by `forgeops-planner`, the first active ForgeOps agent. It should produce a clear plan without performing write-oriented implementation work.
+Use this skill when the current task is to turn a Jira ticket or infrastructure request into a delivery plan that another specialist or human operator can act on.
+
+This skill is for planning and handoff preparation. It does not perform write-oriented implementation work.
 
 ## Inputs
 
-- Jira ticket ID or ticket content.
-- Request summary if no ticket is available.
-- Relevant Confluence links or excerpts when available.
-- Target environment, if specified.
-- Known affected service, module, stack, or repository.
-- Any operator constraints, deadlines, or acceptance criteria.
+Gather whatever is available from the current run:
+
+- Jira ticket ID or Jira ticket content
+- request summary when no ticket is available
+- relevant Confluence links or excerpts
+- target environment, if specified
+- known affected service, module, stack, or repository
+- operator constraints, deadlines, or acceptance criteria
+
+Use Atlassian Rovo as the primary source for Jira and Confluence context when that app is available.
+Use GitHub to inspect repository structure and existing patterns when repo targeting or implementation approach needs confirmation.
 
 ## Workflow
 
-1. Read the ticket or request as the source of truth.
-2. Identify the requested outcome and target environment.
-3. Default to stage-first delivery when the environment is absent or ambiguous.
-4. Enrich with Confluence context when it clarifies architecture, procedures, ownership, or past decisions.
-5. Identify likely affected repositories:
+1. Treat the Jira ticket or request as the source of truth for the requested outcome.
+2. Identify the target environment. If it is absent or ambiguous, default to stage-first planning and call out that assumption explicitly.
+3. Extract the requested outcome, acceptance criteria, constraints, dependencies, deadlines, and definition of done.
+4. Enrich with Confluence context when it clarifies architecture, procedures, ownership, standards, or prior decisions.
+5. Identify the likely affected repositories:
    - `Forecast-5-Analytics/dna-terraform-modules`
    - `Forecast-5-Analytics/dna-terraform-infrastructure`
    - `Forecast-5-Analytics/dna-ansible-playbooks`
-6. Separate known facts from assumptions.
-7. Identify risks, blockers, and missing information.
-8. Draft an implementation-ready plan.
-9. Define validation expectations.
-10. State the next concrete action and whether human approval is required before that action.
+6. Separate confirmed facts from assumptions.
+7. Identify risks, blockers, and missing information that materially affect delivery.
+8. Draft an implementation-ready plan that is specific enough for a builder, validator, or human operator to continue.
+9. Define the validation expectations for the planned work.
+10. Recommend the next concrete action and the right next specialist when a handoff is needed.
+
+## Repo Targeting Rules
+
+Use these defaults when choosing where the work belongs:
+
+- Choose `dna-terraform-modules` for reusable Terraform building blocks or shared module logic.
+- Choose `dna-terraform-infrastructure` for environment-specific composition, wiring, rollout configuration, or stack instantiation.
+- Choose `dna-ansible-playbooks` for host configuration, post-provisioning automation, or operational playbook changes.
+- If more than one repo is likely involved, provide a ranked or split recommendation and explain why.
 
 ## Output Contract
 
-Return a concise plan with these sections:
+Return a concise delivery brief with these sections:
 
-- Summary.
-- Source ticket or request.
-- Target environment.
-- Affected repos.
-- Implementation plan.
-- Assumptions.
-- Risks.
-- Blockers.
-- Validation expectations.
-- Handoff recommendation, if builder, validator, or troubleshooter involvement is needed.
-- Next concrete action.
+- Summary
+- Source ticket or request
+- Target environment
+- Affected repos
+- Implementation plan
+- Assumptions
+- Risks
+- Blockers
+- Validation expectations
+- Handoff recommendation
+- Next concrete action
 
-## What Good Looks Like
+## Quality Bar
 
-- The plan is specific enough for a builder or human operator to continue.
-- The target environment is explicit and stage-first by default.
-- Affected repositories are named instead of implied.
-- Assumptions are labeled as assumptions.
-- Risks are concrete and tied to the proposed work.
-- Blockers are actionable.
-- Validation expectations are clear enough to execute.
-- The next concrete action is a single, reviewable step.
-- The plan does not perform write-oriented implementation work without human approval.
+A strong output should:
 
-## Failure / Ambiguity Handling
+- be specific enough for a builder or human operator to continue without re-reading the full ticket
+- make the target environment explicit and default to stage-first when needed
+- name the affected repositories instead of implying them
+- label assumptions as assumptions
+- tie risks to the proposed work rather than listing generic warnings
+- give actionable blockers
+- define validation expectations clearly enough to execute
+- end with a single reviewable next concrete action
 
-If the ticket or request is incomplete, do not invent missing facts. State what is missing, make conservative assumptions when useful, and identify the smallest next action needed to unblock planning.
+## Failure and Ambiguity Handling
 
-If the target environment is unclear, assume stage for planning purposes and call out that assumption.
-
-If the affected repository is unclear, provide a ranked repo hypothesis and explain why each repo may be involved.
-
-If the request appears production-impacting, security-sensitive, or irreversible, mark it as requiring explicit human approval before any write-oriented implementation action.
-
-If runtime symptoms dominate the request, prepare a planner-to-troubleshooter handoff instead of trying to diagnose deeply within the planner role.
-
+- Do not invent missing facts when the ticket or request is incomplete.
+- If the target environment is unclear, assume stage for planning purposes and call out that assumption.
+- If the affected repository is unclear, provide a ranked repo hypothesis and explain why each repo may be involved.
+- If the request appears production-impacting, security-sensitive, or hard to reverse, explicitly mark it as requiring human approval before write-oriented implementation work.
+- If runtime symptoms dominate the request, prepare a planner-to-troubleshooter handoff instead of trying to diagnose deeply inside the planning step.
