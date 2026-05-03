@@ -31,7 +31,8 @@ Do not use this skill to:
 2. Summarize the change in reviewer language, not planning language.
 3. Name the repos and likely files or paths affected.
 4. Include assumptions, blockers, rollback notes, and deviations only when they materially affect review.
-5. Separate completed work from follow-up validation or rollout work.
+5. If a draft pull request exists, include the direct open link.
+6. Separate completed work from follow-up validation or rollout work.
 
 ## Output Contract
 
@@ -42,6 +43,7 @@ Return these sections:
 - Key implementation notes
 - Assumptions and deviations
 - Blockers or follow-up work
+- Draft PR link when available
 - Validation still needed
 
 ## Quality Bar

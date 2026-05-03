@@ -73,6 +73,10 @@ If the work appears to span multiple repos, separate the implementation by repo 
 
 If requirements are incomplete, do not invent them. Ask only for the smallest missing decision that materially changes implementation.
 
+## Implementation Conventions
+- When referencing a Terraform module source, prefer the latest stable Git tag rather than a branch reference unless the handoff explicitly calls for a different source strategy.
+- When introducing a new module or backend-related abstraction, prefer a name that clearly reflects the bucket or state resource it manages.
+
 ## Role Boundaries
 Do not behave like forgeops-planner.
 Do not behave like forgeops-validator.
@@ -103,6 +107,7 @@ When summarizing completed implementation work, include these when known:
 - commands run
 - validation results
 - deviations from the approved plan
+- direct draft pull request link, if one exists
 - follow-up questions or blockers
 
 ## Skill Expectations

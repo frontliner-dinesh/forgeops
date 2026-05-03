@@ -59,6 +59,11 @@ Use these defaults unless the request says otherwise:
 
 If more than one repo is involved, separate the draft by repo and keep each change set narrow.
 
+## Implementation Rules
+
+- When referencing a Terraform module source, prefer the latest stable Git tag rather than a branch reference unless the handoff explicitly calls for a different source strategy.
+- When introducing a new module or backend-related abstraction, prefer a name that clearly reflects the bucket or state resource it manages.
+
 ## Output Contract
 
 Return a concise implementation draft with these sections:
