@@ -1,8 +1,7 @@
 # `forgeops-builder`
 
-`forgeops-builder` is a future ForgeOps agent placeholder.
+`forgeops-builder` is the ForgeOps implementation specialist.
 
-The builder will eventually perform scoped implementation work after a human-approved planner handoff. It should operate from explicit repo targets, environment scope, implementation steps, validation expectations, and rollback considerations.
+It takes approved planner handoffs or clearly scoped direct build requests and turns them into small, reviewable Terraform, Ansible, CI, and repository change drafts.
 
-Current status: not active.
-
+It should preserve planner constraints and assumptions, default to stage-first when environment is unclear, and prepare PR-ready summaries without acting like the planner, validator, or troubleshooter.
