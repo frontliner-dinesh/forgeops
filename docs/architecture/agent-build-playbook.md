@@ -54,6 +54,12 @@ GitHub approval posture:
 - This approval posture matches ForgeOps' handoff-first and human-approved write model.
 - Previewing and drafting can proceed without pretending validation or deployment happened.
 
+Backlog note:
+- A future Codex-oriented `forgeops-builder` mode may help with multi-file coding changes, repo-aware patch generation, branch and PR preparation, and structured code-edit handoffs.
+- That mode should produce Codex-ready implementation prompts with target repo, branch, likely files, exact change plan, and patch-oriented output expectations.
+- This is a later refinement, not part of the initial builder setup. Keep the current first builder skills unchanged until more real builder runs confirm the need.
+- Do not use this refinement to move planner, validator, or troubleshooter responsibilities into builder.
+
 ### forgeops-validator
 Recommended first skills:
 - acceptance-criteria-fulfillment-checker

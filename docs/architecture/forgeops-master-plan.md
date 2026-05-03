@@ -87,6 +87,18 @@ Possible later additions:
 
 These are intentionally deferred until the core four-agent workflow has been tested.
 
+## Future Improvements Backlog
+
+### Codex-oriented `forgeops-builder` mode
+
+`forgeops-builder` may later gain a Codex-oriented execution mode after the core workflow is proven through more real builder runs.
+
+This is a backlog item, not the current recommended next build step. The current builder should remain implementation-focused, handoff-driven, and role-bounded.
+
+The future mode would optimize for multi-file coding changes, repo-aware patch generation, branch and PR preparation, more structured code-edit handoffs, and Codex-ready implementation prompts that include target repo, branch, likely files, exact change plan, and patch-oriented output expectations.
+
+Revisit this only after real-world builder runs confirm the need. Do not use this backlog item to move planner, validator, or troubleshooter responsibilities into `forgeops-builder`.
+
 ## Primary Workflow
 
 ### Standard delivery flow
