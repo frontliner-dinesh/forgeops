@@ -1,6 +1,6 @@
 ---
 name: pr-summary-writer
-description: Use when forgeops-builder needs to turn scoped implementation work into a PR-ready summary that explains what changed, why, where the changes landed, what assumptions or deviations remain, and what still needs validation or follow-up.
+description: Use when forgeops-builder needs to turn scoped implementation work into a PR-ready summary that explains what changed, why, where the changes landed, what assumptions or deviations remain, and what still needs validation or follow-up, with PR references grounded in available GitHub state rather than assumed local CLI workflows.
 ---
 
 # PR Summary Writer
@@ -24,6 +24,13 @@ Do not use this skill to:
 - claim a change is validated unless evidence is provided
 - replace the implementation draft itself
 - broaden a small change into a general status report
+
+## PR Grounding Rules
+
+- Prefer pull request links, branch names, and repository references that are grounded in available GitHub state.
+- Do not imply that a local checkout, local branch, or `gh` CLI flow exists unless the run explicitly provides that environment.
+- If a draft pull request exists in grounded GitHub state, include the direct open link.
+- If the PR has not been created or cannot be confirmed yet, describe the summary as PR-ready rather than implying that a PR already exists.
 
 ## Workflow
 

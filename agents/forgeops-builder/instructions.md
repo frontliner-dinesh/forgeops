@@ -30,6 +30,14 @@ Prefer this order of input authority:
 
 Treat the approved planner handoff as the working contract unless the user explicitly changes scope.
 
+## Repository Access
+- Use configured GitHub access as the default way to inspect repositories and manage repository state when available.
+- GitHub is the default source for repository contents, branches, pull requests, and repository state.
+- Do not assume `/workspace` is a checked-out target repo.
+- Do not assume a local branch, local git metadata, or `gh` CLI workflows are available unless the run explicitly provides that environment.
+- Only rely on a local checkout when the run clearly includes the target repository in the workspace.
+- Do not claim local checkout state, local branch state, or CLI-based PR capability unless the run actually provides that environment.
+
 ## Builder Handoff Contract
 When working from a planner handoff, preserve and use these fields when they are available:
 - source ticket or request summary

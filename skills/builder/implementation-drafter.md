@@ -1,6 +1,6 @@
 ---
 name: implementation-drafter
-description: Use when forgeops-builder needs to turn an approved planner handoff or a clearly scoped direct build request into a small, reviewable implementation draft with likely files, scoped Terraform or Ansible changes, assumptions, blockers, and a PR-ready summary.
+description: Use when forgeops-builder needs to turn an approved planner handoff or a clearly scoped direct build request into a small, reviewable implementation draft with likely files, scoped Terraform or Ansible changes, assumptions, blockers, and a PR-ready summary, using GitHub as the default repo surface unless the run explicitly provides a checked-out local repo.
 ---
 
 # Implementation Drafter
@@ -40,6 +40,14 @@ When available, preserve these details from the request or handoff:
 - next concrete action
 
 If the environment is unclear, default to stage-first and state that assumption explicitly.
+
+## Repo Access Rules
+
+- Use configured GitHub access as the default source for repo contents, branches, pull requests, and repository state.
+- Do not assume `/workspace` is a checked-out target repo.
+- Do not assume a local feature branch, local git metadata, or `gh` CLI access exists unless the run clearly provides that environment.
+- Only rely on a local checkout when the run explicitly includes the target repository in the workspace.
+- If repo state needed for a write or PR action is missing, ask for the smallest missing repo or branch detail instead of implying that a local checkout should already exist.
 
 ## Workflow
 
