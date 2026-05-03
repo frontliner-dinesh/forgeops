@@ -48,6 +48,12 @@ Recommended first skills:
 - path-scoper
 - pr-summary-writer
 
+GitHub approval posture:
+- forgeops-builder can use GitHub for implementation work.
+- GitHub write actions must require human confirmation.
+- This approval posture matches ForgeOps' handoff-first and human-approved write model.
+- Previewing and drafting can proceed without pretending validation or deployment happened.
+
 ### forgeops-validator
 Recommended first skills:
 - acceptance-criteria-fulfillment-checker
