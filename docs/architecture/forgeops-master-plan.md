@@ -140,6 +140,17 @@ These deferred skills should not be attached until the end-to-end workflow has b
 - prefer small, reviewable changes over broad rewrites
 - use GitHub as the source-of-truth for architecture and skill specs
 - use the editor as the runtime configuration surface
+- push committed source-of-truth updates to origin main so future agent chats see the latest design state
+
+## Standard Codex Sync Workflow
+
+When a ForgeOps source-of-truth update is requested through Codex, use this standard closing workflow:
+
+Then:
+1. commit the change
+2. use commit message: "<commit message>"
+3. push the commit to origin main
+4. print the commit hash, pushed branch, and a short summary
 
 ## Build Order
 
@@ -158,4 +169,3 @@ ForgeOps is working well when:
 - troubleshooter output is evidence-driven
 - each agent stays within role boundaries
 - GitHub remains in sync with agent instructions and skill specs
-

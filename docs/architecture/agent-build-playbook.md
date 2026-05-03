@@ -75,6 +75,7 @@ Do not add a skill just because it sounds useful in theory.
 After every meaningful editor change:
 - sync the corresponding architecture, instruction, or skill spec to GitHub
 - commit small, readable changes
+- push the commit to origin main after committing
 - keep the repo as the design history
 
 ## Standard Codex Handoff Pattern
@@ -85,7 +86,8 @@ When an editor change is made, create a Codex prompt that includes:
 - exact file path to create or update
 - exact content to write
 - commit message
-- request to print commit hash and short summary
+- instruction to push the commit to origin main after committing
+- request to print commit hash, pushed branch, and short summary
 
 ## Reusable Codex Prompt Template
 
@@ -106,7 +108,8 @@ Use this exact content:
 Then:
 1. commit the change
 2. use commit message: "<commit message>"
-3. print the commit hash and a short summary
+3. push the commit to origin main
+4. print the commit hash, pushed branch, and a short summary
 
 ## Agent Chat Bootstrap Guidance
 
@@ -126,4 +129,3 @@ Start builder with:
 - rewritten instructions
 - updated description and starter prompts
 - only the first few implementation-focused skills
-
