@@ -48,17 +48,18 @@ Recommended first skills:
 - path-scoper
 - pr-summary-writer
 
+Codex-handoff posture:
+- forgeops-builder may be configured as a Codex-handoff agent.
+- This means shaping outputs toward coding-ready prompts and patch-oriented plans.
+- Codex-handoff output should include target repo, branch expectation when known, likely files, exact change objective, constraints, validation still needed, and blockers.
+- This is still not the same as a native Codex runtime or tool inside the editor.
+- This does not move planner, validator, or troubleshooter responsibilities into builder.
+
 GitHub approval posture:
 - forgeops-builder can use GitHub for implementation work.
 - GitHub write actions must require human confirmation.
 - This approval posture matches ForgeOps' handoff-first and human-approved write model.
 - Previewing and drafting can proceed without pretending validation or deployment happened.
-
-Backlog note:
-- A future Codex-oriented `forgeops-builder` mode may help with multi-file coding changes, repo-aware patch generation, branch and PR preparation, and structured code-edit handoffs.
-- That mode should produce Codex-ready implementation prompts with target repo, branch, likely files, exact change plan, and patch-oriented output expectations.
-- This is a later refinement, not part of the initial builder setup. Keep the current first builder skills unchanged until more real builder runs confirm the need.
-- Do not use this refinement to move planner, validator, or troubleshooter responsibilities into builder.
 
 ### forgeops-validator
 Recommended first skills:
@@ -137,7 +138,7 @@ The next active build target after forgeops-planner is:
 - forgeops-builder
 
 Start builder with:
-- role and boundary definition
+- Codex-handoff role and boundary definition
 - rewritten instructions
 - updated description and starter prompts
 - only the first few implementation-focused skills

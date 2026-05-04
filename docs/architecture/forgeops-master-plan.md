@@ -30,14 +30,16 @@ Does not:
 
 ### 2. forgeops-builder
 Purpose:
-- implementation specialist
+- Codex-handoff implementation specialist
 - takes approved planner handoffs or clearly scoped direct build requests
-- produces Terraform, Ansible, CI, and repo change drafts
+- produces implementation handoffs optimized for Codex-style execution
+- prepares patch-oriented Terraform, Ansible, CI, and repo change plans
 
 Does:
 - inspect repo context
 - identify likely files and paths
-- draft implementation changes
+- translate approved scope into coding-ready handoffs
+- prepare patch-oriented plans
 - prepare PR-ready summaries
 - preserve planner constraints and assumptions
 
@@ -45,6 +47,7 @@ Does not:
 - redo planning from scratch unless required by missing detail
 - claim validation is complete
 - claim runtime diagnosis without evidence
+- claim Codex is a native runtime tool inside the editor
 
 ### 3. forgeops-validator
 Purpose:
@@ -87,17 +90,15 @@ Possible later additions:
 
 These are intentionally deferred until the core four-agent workflow has been tested.
 
-## Future Improvements Backlog
+## Builder Handoff Direction
 
-### Codex-oriented `forgeops-builder` mode
+### Codex-handoff `forgeops-builder`
 
-`forgeops-builder` may later gain a Codex-oriented execution mode after the core workflow is proven through more real builder runs.
+`forgeops-builder` now prepares implementation handoffs optimized for Codex-style execution.
 
-This is a backlog item, not the current recommended next build step. The current builder should remain implementation-focused, handoff-driven, and role-bounded.
+This means shaping builder output around target repo, target branch or branching expectation when known, target environment, likely files, exact implementation objective, constraints to preserve, patch-oriented change plan, validation still needed, blockers, and PR-ready summaries.
 
-The future mode would optimize for multi-file coding changes, repo-aware patch generation, branch and PR preparation, more structured code-edit handoffs, and Codex-ready implementation prompts that include target repo, branch, likely files, exact change plan, and patch-oriented output expectations.
-
-Revisit this only after real-world builder runs confirm the need. Do not use this backlog item to move planner, validator, or troubleshooter responsibilities into `forgeops-builder`.
+This does not move planner, validator, or troubleshooter responsibilities into `forgeops-builder`. It also does not mean Codex is a native runtime tool inside the editor; the builder prepares execution-ready coding handoffs.
 
 ## Primary Workflow
 
@@ -105,7 +106,7 @@ Revisit this only after real-world builder runs confirm the need. Do not use thi
 1. Request or Jira ticket enters forgeops-planner
 2. forgeops-planner produces a delivery brief
 3. forgeops-planner routes to forgeops-builder when implementation work is needed
-4. forgeops-builder prepares scoped changes
+4. forgeops-builder prepares a Codex-ready implementation handoff
 5. forgeops-validator reviews the proposed change
 6. forgeops-troubleshooter is used when runtime ambiguity, drift, or operational evidence is needed
 7. Results are returned as a clean delivery outcome
@@ -115,6 +116,7 @@ forgeops-builder may be used directly for small, clearly scoped implementation r
 - state assumptions explicitly
 - identify likely repo scope
 - default to stage-first when environment is unclear
+- produce a Codex-ready implementation handoff rather than claiming native execution
 - avoid pretending planning or validation already happened
 
 ## Repo Targets
@@ -176,7 +178,7 @@ Recommended order:
 
 ForgeOps is working well when:
 - planner handoffs are concise and actionable
-- builder changes are scoped and repo-appropriate
+- builder handoffs are Codex-ready, scoped, and repo-appropriate
 - validator output is skeptical and useful
 - troubleshooter output is evidence-driven
 - each agent stays within role boundaries
