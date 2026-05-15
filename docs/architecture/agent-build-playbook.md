@@ -82,6 +82,15 @@ Recommended first skills:
 - root-cause-hypothesis-builder
 - safe-remediation-suggester
 
+Troubleshooting posture:
+- forgeops-troubleshooter is the runtime investigation specialist for incidents, drift, rollout regressions, and deployed-state ambiguity.
+- It is repo-aware, ticket-aware, runbook-aware, and evidence-driven when evidence is provided.
+- GitHub and Atlassian Rovo are read-only in v1; direct runtime evidence sources are not assumed unless the user provides them or configured tools expose them.
+- It separates symptoms, causes, impact, and remediation as different judgments.
+- It ranks hypotheses by likelihood and prefers safe verification steps before remediation.
+- It routes change review or diff review to forgeops-validator.
+- It should store only durable memory patterns such as stable environment facts, recurring failure patterns, and repo-specific troubleshooting cues.
+
 ## How To Decide Whether A Skill Should Be Added
 
 Add a skill only if it:
@@ -143,11 +152,10 @@ That should be enough context for continuing the ForgeOps build without restatin
 
 ## Current Recommendation
 
-The next active build target after forgeops-planner is:
+The core ForgeOps agent source docs now cover:
+- forgeops-planner
 - forgeops-builder
+- forgeops-validator
+- forgeops-troubleshooter
 
-Start builder with:
-- Codex-handoff role and boundary definition
-- rewritten instructions
-- updated description and starter prompts
-- only the first few implementation-focused skills
+Next, test the end-to-end workflow across realistic planner, builder, validator, and troubleshooter cases before adding more skills or broadening any agent role.

@@ -72,18 +72,25 @@ Does not:
 ### 4. forgeops-troubleshooter
 Purpose:
 - runtime investigation specialist
-- handles operational ambiguity, drift, alarms, logs, metrics, and deployed-state diagnosis
+- investigates incidents, drift, and rollout regressions
+- handles operational ambiguity, drift, alarms, logs, metrics, deployed-state mismatches, rollout regressions, and incident symptoms
+- produces evidence-driven diagnosis and safest sensible next steps
 
 Does:
-- investigate symptoms
-- frame likely root causes
-- estimate blast radius
-- recommend safe next checks and remediation paths
+- investigate runtime symptoms and failure signals
+- compare expected behavior with observed behavior
+- identify and rank likely root-cause hypotheses
+- estimate blast radius and operational risk
+- recommend the safest next checks
+- suggest remediation paths without overstating certainty
 
 Does not:
 - act as the planner for normal implementation work
+- behave like forgeops-validator for change review or diff review
 - draft broad code changes by default
-- claim fixes are validated without evidence
+- claim root cause is confirmed without evidence
+- claim a remediation worked without verification evidence
+- casually recommend high-blast-radius actions
 
 ## Optional Future Agents
 
@@ -114,6 +121,15 @@ This does not move planner, validator, or troubleshooter responsibilities into `
 5. forgeops-validator reviews the proposed change
 6. forgeops-troubleshooter is used when runtime ambiguity, drift, or operational evidence is needed
 7. Results are returned as a clean delivery outcome
+
+### Troubleshooting flow
+forgeops-troubleshooter may be used when the request centers on alerts, incidents, deployment regressions, drift signals, service health concerns, infra/runtime mismatches, or post-change operational issues. It should:
+- separate symptoms, causes, impact, and remediation as different judgments
+- distinguish confirmed evidence from assumptions and unknowns
+- rank hypotheses by likelihood and fit to timing plus failure pattern
+- prefer safe verification steps before remediation
+- stay stage-first when environment or scope is unclear
+- route change review or diff review to forgeops-validator
 
 ### Direct builder flow
 forgeops-builder may be used directly for small, clearly scoped implementation requests without a Jira ticket, but it must:
@@ -184,6 +200,6 @@ ForgeOps is working well when:
 - planner handoffs are concise and actionable
 - builder handoffs are Codex-ready, scoped, and repo-appropriate
 - validator output is skeptical, evidence-grounded, and useful
-- troubleshooter output is evidence-driven
+- troubleshooter output is evidence-driven, hypothesis-ranked, and operationally conservative
 - each agent stays within role boundaries
 - GitHub remains in sync with agent instructions and skill specs

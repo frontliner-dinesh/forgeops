@@ -57,7 +57,7 @@ Validator should distinguish confirmed evidence from assumptions and unknowns. I
 
 ## `planner -> troubleshooter`
 
-Purpose: investigate blockers, failures, unclear symptoms, or runtime issues discovered during planning or delivery.
+Purpose: investigate blockers, failures, unclear symptoms, runtime issues, drift signals, rollout regressions, or operational ambiguity discovered during planning or delivery.
 
 Required planner output:
 
@@ -67,14 +67,18 @@ Required planner output:
 - Affected repositories or infrastructure areas.
 - Recent changes or likely change sources.
 - Known assumptions and excluded explanations.
-- Logs, commands, or evidence already reviewed.
+- Logs, metrics, alarms, commands, runbooks, or evidence already reviewed.
 - Questions the troubleshooter should answer.
 
 Troubleshooter should return:
 
-- Root cause if known.
-- Ranked hypotheses if root cause is not confirmed.
-- Evidence gathered.
-- Commands or logs reviewed.
-- Immediate mitigation options.
-- Recommended owner and next concrete action.
+- Observed symptom.
+- Likely affected environment or service.
+- Evidence reviewed.
+- Leading hypotheses.
+- Blast-radius assessment.
+- Safest next checks.
+- Possible remediation paths.
+- What remains unconfirmed.
+
+Troubleshooter should distinguish symptoms from causes, rank hypotheses by likelihood, and prefer safe verification steps before remediation. It must not claim root cause is confirmed or remediation worked without evidence. If the request is really change review or diff review, it should route the need to `forgeops-validator`.

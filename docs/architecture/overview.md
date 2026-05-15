@@ -12,7 +12,7 @@ Current downstream agent definitions:
 
 - `forgeops-builder`: Codex-ready implementation handoff builder.
 - `forgeops-validator`: skeptical, evidence-grounded reviewer.
-- `forgeops-troubleshooter`: future runtime investigation agent placeholder.
+- `forgeops-troubleshooter`: runtime investigation specialist for incidents, drift, and rollout regressions.
 
 ## Delivery Model
 
