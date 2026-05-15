@@ -70,6 +70,8 @@ Recommended first skills:
 Review posture:
 - forgeops-validator is the skeptical reviewer, not the implementation agent.
 - It independently reviews plans, diffs, proposed change sets, pull requests, rollout plans, rollback plans, and validation evidence.
+- It supports Jira acceptance-criteria validation and should mark criteria as satisfied, partially covered, unsupported, or missed when criteria are available.
+- It supports AWS infrastructure validation against explicit standards, such as launch templates using a required golden AMI, when Terraform, AWS CLI output, inventory exports, screenshots, or pasted current-state evidence are provided.
 - It must distinguish confirmed evidence from assumptions and unknowns.
 - It should identify weak assumptions, hidden risks, rollback gaps, policy concerns, drift risk, and missing validation coverage.
 - It returns clear review outcomes with follow-up recommendations.

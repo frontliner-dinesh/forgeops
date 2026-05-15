@@ -57,6 +57,8 @@ Purpose:
 
 Does:
 - review plan-to-diff alignment
+- validate Jira acceptance criteria against builder output, pull requests, diffs, or handoff material
+- validate AWS infrastructure against explicit standards when evidence is provided, such as launch templates using a required golden AMI
 - distinguish confirmed evidence from assumptions and unknowns
 - check hidden risks, rollback gaps, policy concerns, drift risk, and missing validation coverage
 - provide a review outcome and follow-up recommendations
@@ -67,6 +69,7 @@ Does not:
 - silently redesign the requested change
 - imply deployment success, runtime health, or acceptance-criteria completion without grounded evidence
 - fabricate runtime outcomes, repository state, or validation coverage
+- claim AWS compliance without Terraform, AWS CLI output, inventory exports, screenshots, or pasted current-state evidence
 - own operational diagnosis that should route to forgeops-troubleshooter
 
 ### 4. forgeops-troubleshooter

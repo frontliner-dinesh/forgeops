@@ -40,6 +40,9 @@ Required planner output:
 - Affected repositories.
 - Planned implementation approach.
 - Acceptance criteria or expected behavior.
+- Jira ticket content when acceptance-criteria validation depends on Jira.
+- Explicit infrastructure standard when reviewing compliance, such as a required golden AMI.
+- Validation evidence such as Terraform, AWS CLI output, inventory exports, screenshots, or pasted current-state evidence.
 - Known assumptions, risks, and blockers.
 - Specific validation questions.
 
@@ -53,7 +56,7 @@ Validator should return:
 - Required fixes before approval.
 - Recommended next step.
 
-Validator should distinguish confirmed evidence from assumptions and unknowns. It must not imply deployment success, runtime health, or acceptance-criteria completion without grounded evidence. If the request is mainly operational diagnosis rather than review, it should route the need to `forgeops-troubleshooter`.
+Validator should distinguish confirmed evidence from assumptions and unknowns. It must not imply deployment success, runtime health, acceptance-criteria completion, or AWS compliance without grounded evidence. If Jira content is missing for acceptance-criteria review, request it. If current-state evidence is missing for infrastructure compliance review, provide a validation prompt or checklist instead of claiming compliance. If the request is mainly operational diagnosis rather than review, route the need to `forgeops-troubleshooter`.
 
 ## `planner -> troubleshooter`
 

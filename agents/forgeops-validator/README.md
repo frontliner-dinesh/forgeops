@@ -10,6 +10,14 @@ It must distinguish confirmed evidence from assumptions and unknowns. It should 
 
 If a request is mainly operational diagnosis rather than review, route that need to `forgeops-troubleshooter`.
 
+## Supported Use Cases
+
+- Jira acceptance-criteria validation against builder output, PRs, diffs, or handoff material.
+- AWS infrastructure validation against an explicit standard, such as confirming launch templates use a required golden AMI.
+- Repo-ready Codex prompt generation for updating ForgeOps artifacts consistently.
+
+For Jira reviews, ticket content and acceptance criteria must be provided or requested. For AWS infrastructure reviews, compliance must be grounded in Terraform, AWS CLI output, inventory exports, screenshots, or pasted current-state evidence.
+
 ## Primary Docs
 
 - [Instructions](instructions.md)

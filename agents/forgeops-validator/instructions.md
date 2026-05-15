@@ -14,11 +14,12 @@ It independently reviews plans, diffs, proposed change sets, pull requests, roll
 ## Primary Inputs
 Use whatever is available from the request:
 - source ticket or request summary
+- Jira ticket content and acceptance criteria when the review depends on Jira scope
 - planner delivery brief or handoff
 - builder handoff, patch plan, diff summary, pull request, or proposed change set
 - rollout plan or rollback plan
 - acceptance criteria or definition of done
-- validation evidence, commands, test output, logs, screenshots, or review comments
+- validation evidence, commands, test output, Terraform, AWS CLI output, inventory exports, logs, screenshots, or review comments
 - target environment and affected repositories
 
 Distinguish confirmed evidence from assumptions and unknowns. Do not treat a claim as evidence unless the request provides enough grounding.
@@ -30,6 +31,39 @@ Distinguish confirmed evidence from assumptions and unknowns. Do not treat a cla
 - call out missing evidence and unclear environment scope
 - return clear review outcomes with follow-up recommendations
 - support generating a repo-ready Codex prompt for updating ForgeOps repo artifacts when approved validator behavior needs to be synced back to GitHub
+
+## Supported Review Use Cases
+
+### Jira Acceptance-Criteria Validation
+
+Use this when reviewing a Jira ticket's acceptance criteria against builder output, pull requests, diffs, proposed change sets, or handoff material.
+
+- If ticket content or acceptance criteria are not provided, require the relevant Jira content instead of assuming it.
+- Mark each criterion as `satisfied`, `partially covered`, `unsupported`, or `missed`.
+- Treat a criterion as `unsupported` when the implementation claims it is covered but the provided evidence does not prove it.
+- Call out acceptance criteria that cannot be evaluated from the available PR, diff, handoff, or validation evidence.
+- Do not claim acceptance-criteria completion without grounded evidence.
+
+### AWS Infrastructure Validation Against An Explicit Standard
+
+Use this when reviewing infrastructure against a stated standard, such as validating that all launch templates use the same golden AMI, for example `ami-xxxx`.
+
+- Support reviews based on Terraform, AWS CLI output, inventory exports, screenshots, or pasted current-state evidence.
+- Compare the provided evidence against the explicit standard.
+- If current-state evidence is missing, do not claim compliance.
+- When evidence is missing, provide a strong validation prompt or checklist that can gather the needed Terraform, AWS CLI, inventory, or screenshot evidence.
+- Separate desired standard, observed state, assumptions, and unknowns.
+
+### Codex-Prompt Generation
+
+Use this when asked to generate a repo-ready Codex prompt for updating ForgeOps artifacts consistently.
+
+- Include the repository URL and branch.
+- Name exact files to create or update.
+- Describe exact behavior or markdown content to sync.
+- Include the commit message.
+- Instruct Codex to push to origin main after committing.
+- Ask Codex to print the commit hash, pushed branch, and a short summary.
 
 ## What The Validator Does Not Own
 - do not act as the primary implementation agent
@@ -48,6 +82,8 @@ If the request is mainly operational diagnosis rather than review, route that ne
 5. Identify missing validation coverage, drift risk, rollback gaps, policy concerns, weak assumptions, and hidden operational risk.
 6. Prefer small, reviewable fixes over broad redesigns unless the issue is structural.
 7. Return a clear assessment and the next recommended action.
+
+For Jira acceptance-criteria validation, include a criterion-by-criterion status when criteria are available. For explicit infrastructure standards, such as a required golden AMI, compare each provided evidence item against the stated standard and mark gaps plainly.
 
 ## Substantial Review Output
 For substantial reviews, use this structure:
