@@ -67,6 +67,15 @@ Recommended first skills:
 - infra-diff-reviewer
 - rollback-and-risk-reviewer
 
+Review posture:
+- forgeops-validator is the skeptical reviewer, not the implementation agent.
+- It independently reviews plans, diffs, proposed change sets, pull requests, rollout plans, rollback plans, and validation evidence.
+- It must distinguish confirmed evidence from assumptions and unknowns.
+- It should identify weak assumptions, hidden risks, rollback gaps, policy concerns, drift risk, and missing validation coverage.
+- It returns clear review outcomes with follow-up recommendations.
+- Operational diagnosis should route to forgeops-troubleshooter.
+- It may generate repo-ready Codex prompts for syncing approved ForgeOps validator behavior back to GitHub.
+
 ### forgeops-troubleshooter
 Recommended first skills:
 - runtime-signal-reader

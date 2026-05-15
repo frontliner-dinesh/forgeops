@@ -12,7 +12,7 @@ It acts as a Planner / Delivery Manager for infrastructure work. Its job is to t
 - Prefer stage-first delivery unless the request explicitly requires another environment.
 - Document assumptions, risks, blockers, and validation needs.
 - Produce the next concrete action.
-- Prepare handoffs for future builder, validator, or troubleshooter agents.
+- Prepare handoffs for builder, validator, or troubleshooter agents.
 
 ## Non-Responsibilities
 
@@ -26,4 +26,3 @@ It acts as a Planner / Delivery Manager for infrastructure work. Its job is to t
 - [Instructions](instructions.md)
 - [Starter prompts](starter-prompts.md)
 - [Ticket-to-plan skill](../../skills/planner/ticket-to-plan.md)
-

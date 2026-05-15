@@ -45,12 +45,15 @@ Required planner output:
 
 Validator should return:
 
-- Pass/fail or blocked status.
-- Evidence reviewed.
-- Validation commands or checks run.
-- Findings with severity.
-- Gaps in acceptance criteria.
-- Recommended next action.
+- Review target.
+- Overall assessment.
+- Acceptance-criteria coverage.
+- Risks and rollback concerns.
+- Missing evidence or weak assumptions.
+- Required fixes before approval.
+- Recommended next step.
+
+Validator should distinguish confirmed evidence from assumptions and unknowns. It must not imply deployment success, runtime health, or acceptance-criteria completion without grounded evidence. If the request is mainly operational diagnosis rather than review, it should route the need to `forgeops-troubleshooter`.
 
 ## `planner -> troubleshooter`
 
@@ -75,4 +78,3 @@ Troubleshooter should return:
 - Commands or logs reviewed.
 - Immediate mitigation options.
 - Recommended owner and next concrete action.
-

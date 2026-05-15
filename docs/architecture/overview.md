@@ -6,13 +6,13 @@ The system is intended to help turn infrastructure work requests into implementa
 
 ## Current State
 
-`forgeops-planner` is the first active agent being built.
+`forgeops-planner` is the first active agent being built and remains the most mature ForgeOps agent.
 
-The other agents are intentionally represented as placeholders until their responsibilities and handoff needs are proven by planner output:
+Current downstream agent definitions:
 
-- `forgeops-builder`
-- `forgeops-validator`
-- `forgeops-troubleshooter`
+- `forgeops-builder`: Codex-ready implementation handoff builder.
+- `forgeops-validator`: skeptical, evidence-grounded reviewer.
+- `forgeops-troubleshooter`: future runtime investigation agent placeholder.
 
 ## Delivery Model
 
@@ -34,5 +34,4 @@ The default delivery posture is stage-first. Production-impacting work should be
 1. Intake arrives from a ticket, operator request, or troubleshooting context.
 2. `forgeops-planner` converts the request into an implementation-ready plan.
 3. A human reviews and approves the next write-oriented action.
-4. Future agents may implement, validate, or troubleshoot using planner handoff contracts.
-
+4. Downstream agents implement handoffs, validate proposed work, or troubleshoot runtime issues using explicit handoff contracts.
